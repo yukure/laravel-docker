@@ -4,8 +4,10 @@ FROM php:7.2-fpm
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 RUN apt-get update \
-  && apt-get install -y zlib1g-dev mysql-client \
-  && docker-php-ext-install zip pdo_mysql
+    && apt-get install -y zlib1g-dev \
+    && apt-get install -y libpq-dev \
+    && docker-php-ext-install zip \
+    && docker-php-ext-install pdo_mysql pdo_pgsql
 
 #Composer install
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -20,7 +22,17 @@ ENV COMPOSER_HOME /composer
 
 ENV PATH $PATH:/composer/vendor/bin
 
+# redis install
+RUN pecl install -o -f redis \
+    &&  rm -rf /tmp/pear \
+    &&  docker-php-ext-enable redis
+
+# node.js install
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && apt-get update \
+    && apt-get install -y nodejs
 
 WORKDIR /var/www
 
+# installer require
 RUN composer global require "laravel/installer"
