@@ -41,3 +41,7 @@ $ composer create-project "laravel/laravel=5.5.*" app
 ```
 
 これで、Laravelを起動するための環境と、Laravelのインストールが完了しました。
+
+## ブラウザでの確認
+ブラウザで、[localhost](http://localhost/)にアクセスして↓のページが表示されたらOKです！
+![Laravel Top Page](https://user-images.githubusercontent.com/18342796/53179719-a02e4980-3637-11e9-90a5-a5490e60ac7d.png)
