@@ -35,6 +35,12 @@ docker-compose コマンドを使用してコンテナの作成と起動を行�
 $ docker-compose up -d
 ```
 
+## phpコンテナに入る
+`exec`コマンドを使用して、コンテナ内に入ります。
+```shell
+docker-compose exec php bash
+```
+
 ## Laravelをインストールする
 ```shell
 $ composer create-project "laravel/laravel=5.5.*" app
