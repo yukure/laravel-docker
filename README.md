@@ -43,7 +43,7 @@ docker-compose exec php bash
 
 ## Laravelをインストールする
 ```shell
-$ composer create-project "laravel/laravel=5.5.*" app
+$ laravel new
 ```
 
 これで、Laravelを起動するための環境と、Laravelのインストールが完了しました。
