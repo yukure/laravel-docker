@@ -28,6 +28,7 @@ RUN pecl install -o -f redis \
     &&  docker-php-ext-enable redis
 
 # node.js install
+RUN apt-get install -y gnupg
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get update \
     && apt-get install -y nodejs
